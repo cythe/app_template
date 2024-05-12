@@ -3,6 +3,10 @@ VERSION = 1.0.0
 obj-y += test
 
 INC_FLAGS += -I $(inc_dir)
+
+INC_FLAGS += $(shell pkgconf --cflags libmpeg2)
+SYS_LIBS += $(shell pkgconf --libs libmpeg2)
+
 EXTRA_LIBD += -L $(lib_dir)
 EXTRA_LIBS += -lmath
 EXTRA_LIBS += -lothermath

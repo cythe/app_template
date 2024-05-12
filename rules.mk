@@ -28,9 +28,9 @@ all: $(TARGET)
 
 $(TARGET): $(c_objs) $(cx_objs)
 ifeq ($(TARGET_IS_LIB), 1)
-	$(CX) -shared $(LD_FLAGS) $< -o $@ $(EXTRA_LIBS)
+	$(CX) -shared $(LD_FLAGS) $< -o $@ $(SYS_LIBS) $(EXTRA_LIBS)
 else
-	$(CX) $(LD_FLAGS) $(c_objs) $(cx_objs) -o $@ $(EXTRA_LIBD) $(EXTRA_LIBS)
+	$(CX) $(LD_FLAGS) $(c_objs) $(cx_objs) -o $@ $(SYS_LIBS) $(EXTRA_LIBD) $(EXTRA_LIBS)
 endif
 
 clean:

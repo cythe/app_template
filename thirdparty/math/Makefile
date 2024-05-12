@@ -3,6 +3,10 @@ VERSION = 1.1.0
 obj-so += othermath
 
 INC_FLAGS += -I $(inc_dir)
+
+INC_FLAGS += $(shell pkgconf --cflags libmpeg2)
+SYS_LIBS += $(shell pkgconf --libs libmpeg2)
+
 EXTRA_LIBD += -L $(lib_dir)
 EXTRA_LIBS +=
 EXTRA_LIBS +=
