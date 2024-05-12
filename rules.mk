@@ -24,9 +24,9 @@ endif
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@ > $@.tmp && \
 	mv -f $@.tmp $@;
 
-all: $(target)
+all: $(TARGET)
 
-$(target): $(c_objs) $(cx_objs)
+$(TARGET): $(c_objs) $(cx_objs)
 ifeq ($(TARGET_IS_LIB), 1)
 	$(CX) -shared $(LD_FLAGS) $< -o $@ $(EXTRA_LIBS)
 else
@@ -34,14 +34,14 @@ else
 endif
 
 clean:
-	rm -f $(c_deps) $(cx_deps) $(c_objs) $(cx_objs) $(target)
+	rm -f $(c_deps) $(cx_deps) $(c_objs) $(cx_objs) $(TARGET)
 
-install: $(target)
+install: $(TARGET)
 ifeq ($(TARGET_IS_LIB), 1)
-	install -m 775 $(target) $(lib_dir)
-	pushd $(lib_dir) && ln -sf $(target) lib$(obj-so).so && popd
+	install -m 775 $(TARGET) $(lib_dir)
+	pushd $(lib_dir) && ln -sf $(TARGET) lib$(obj-so).so && popd
 	install -m 664 $(inc_files) $(inc_dir)
 else
-	install -m 775 $(target) $(bin_dir)
+	install -m 775 $(TARGET) $(bin_dir)
 endif
 

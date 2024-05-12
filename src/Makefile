@@ -7,7 +7,7 @@ EXTRA_LIBD += -L $(lib_dir)
 EXTRA_LIBS += -lmath
 EXTRA_LIBS += -lothermath
 
-target = $(obj-y)
+TARGET = $(obj-y)
 
 TARGET_IS_LIB = 0
 

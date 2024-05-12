@@ -7,7 +7,7 @@ EXTRA_LIBD += -L $(lib_dir)
 EXTRA_LIBS +=
 EXTRA_LIBS +=
 
-target = lib$(obj-so).$(VERSION).so
+TARGET = lib$(obj-so).$(VERSION).so
 
 TARGET_IS_LIB = 1
 
