@@ -20,10 +20,11 @@ bin_dir=$(release_dir)/bin
 lib_dir=$(release_dir)/lib
 inc_dir=$(release_dir)/include
 #doc_dir=$(release_dir)/doc
+thirdparty_dir := $(topdir)/thirdparty
 
 export topdir bin_dir lib_dir inc_dir #doc_dir
 
-DIRS = math thirdparty/math src
+DIRS = math $(thirdparty_dir)/math src
 
 all: create_dirs
 	@for dir in $(DIRS) ; do \
@@ -36,6 +37,13 @@ all: create_dirs
 			fi; \
 		fi \
 	done
+
+prebuild: create_dirs
+	@if test -d $(thirdparty_dir) ; then \
+		pushd $(thirdparty_dir) ; \
+		./prebuild.sh $(release_dir) ; \
+		popd ; \
+	fi
 
 create_dirs:
 	mkdir -p $(bin_dir) $(inc_dir) $(lib_dir)
