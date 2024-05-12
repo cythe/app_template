@@ -4,8 +4,8 @@ obj-y += test
 
 INC_FLAGS += -I $(inc_dir)
 
-INC_FLAGS += $(shell pkgconf --cflags libmpeg2)
-SYS_LIBS += $(shell pkgconf --libs libmpeg2)
+INC_FLAGS += $(shell pkgconf --cflags libjpeg)
+SYS_LIBS += $(shell pkgconf --libs libjpeg)
 
 EXTRA_LIBD += -L $(lib_dir)
 EXTRA_LIBS += -lmath
