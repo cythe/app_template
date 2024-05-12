@@ -21,3 +21,12 @@
 [] C/C++嵌入汇编的支持.
 [] 对Makefile做第二次抽象, 将各种FLAG变量进行规范化.
 [] 添加对三方库的自动化处理, 目前三方库的安装prefix需要手动指定到release文件夹中.
+
+[Bug]
+[] 如果删除了release目录后执行make clean, 会出现错误.
+    main.cpp:3:10: 致命错误：mymath.h：没有那个文件或目录
+        3 | #include "mymath.h"
+          |          ^~~~~~~~~~
+    编译中断。
+
+
