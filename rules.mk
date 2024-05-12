@@ -1,17 +1,28 @@
+-include $(c_deps) $(cx_deps)
 
-%.o: %.c
+%.o: %.c %.d
 ifeq ($(TARGET_IS_LIB), 1)
 	$(CC) -fPIC $(INC_FLAGS) $(CFLAGS) -c $< -o $@
 else
 	$(CC) $(INC_FLAGS) $(CFLAGS) -c $< -o $@
 endif
 
-%.ox: %.cpp
+%.ox: %.cpp %.dx
 ifeq ($(TARGET_IS_LIB), 1)
 	$(CX) -fPIC $(INC_FLAGS) $(CXFLAGS) -c $< -o $@
 else
 	$(CX) $(INC_FLAGS) $(CXFLAGS) -c $< -o $@
 endif
+
+%.d: %.c
+	$(CC) -M $(INC_FLAGS) $(CFLAGS) $< > $@; \
+	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@ > $@.tmp && \
+	mv -f $@.tmp $@;
+
+%.dx: %.cpp
+	$(CX) -M $(INC_FLAGS) $(CXFLAGS) $< > $@; \
+	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@ > $@.tmp && \
+	mv -f $@.tmp $@;
 
 all: $(target)
 
@@ -23,7 +34,7 @@ else
 endif
 
 clean:
-	rm -f $(c_objs) $(cx_objs) $(target)
+	rm -f $(c_deps) $(cx_deps) $(c_objs) $(cx_objs) $(target)
 
 install: $(target)
 ifeq ($(TARGET_IS_LIB), 1)

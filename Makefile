@@ -1,4 +1,4 @@
-CROSS_COMPILE ?= aarch64-linux-gnu-
+CROSS_COMPILE ?= #aarch64-linux-gnu-
 
 AS = $(CROSS_COMPILE)as
 LD = $(CROSS_COMPILE)ld
