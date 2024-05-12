@@ -6,9 +6,6 @@ lib_dir=$(release_dir)/lib
 inc_dir=$(release_dir)/include
 #doc_dir=$(release_dir)/doc
 
-CC=gcc
-CX=g++
-
 .PHONY: all clean
 
 obj-y += test
@@ -29,15 +26,15 @@ c_objs  := $(patsubst %c, %o, $(c_srcs))
 cx_objs := $(patsubst %cpp, %ox, $(cx_srcs))
 
 %.o: %.c
-	$(CROSS_COMPILE)$(CC) $(INC_FLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(INC_FLAGS) $(CFLAGS) -c $< -o $@
 
 %.ox: %.cpp
-	$(CROSS_COMPILE)$(CX) $(INC_FLAGS) $(CXFLAGS) -c $< -o $@
+	$(CX) $(INC_FLAGS) $(CXFLAGS) -c $< -o $@
 
 all:$(target)
 
 $(target): $(c_objs) $(cx_objs)
-	$(CROSS_COMPILE)$(CX) $(LD_FLAGS) $(c_objs) $(cx_objs) -o $@ $(EXTRA_LIBD) $(EXTRA_LIBS)
+	$(CX) $(LD_FLAGS) $(c_objs) $(cx_objs) -o $@ $(EXTRA_LIBD) $(EXTRA_LIBS)
 
 clean:
 	rm -f $(c_objs) $(cx_objs) $(target)
