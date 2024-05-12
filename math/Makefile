@@ -15,5 +15,4 @@ TARGET = lib$(obj-so).$(VERSION).so
 
 TARGET_IS_LIB = 1
 
-include $(topdir)/files.mk
 include $(topdir)/rules.mk

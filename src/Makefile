@@ -15,5 +15,4 @@ TARGET = $(obj-y)
 
 TARGET_IS_LIB = 0
 
-include $(topdir)/files.mk
 include $(topdir)/rules.mk
