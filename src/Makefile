@@ -6,16 +6,10 @@ INC_FLAGS += -I $(inc_dir)
 EXTRA_LIBD += -L $(lib_dir)
 EXTRA_LIBS += -lmath
 EXTRA_LIBS += -lothermath
+
 target = $(obj-y)
 
-#include $(TOPDIR)/libs.mk
-
-inc_files := $(wildcard *.h)
-c_srcs  := $(wildcard *.c)
-cx_srcs := $(wildcard *.cpp)
-
-c_objs  := $(patsubst %c, %o, $(c_srcs))
-cx_objs := $(patsubst %cpp, %ox, $(cx_srcs))
+include $(TOPDIR)/files.mk
 
 %.o: %.c
 	$(CC) $(INC_FLAGS) $(CFLAGS) -c $< -o $@
