@@ -1,7 +1,8 @@
 *.d
-*.dx
+*.dx 
 *.o
 *.ox
 *.so
 *.a
 release
+*.patch

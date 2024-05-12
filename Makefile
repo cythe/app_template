@@ -14,14 +14,14 @@ OBJDUMP = $(CROSS_COMPILE)objdump
 export AS LD CC CX CPP AR NM
 export STRIP OBJCOPY OBJDUMP
 
-TOPDIR := $(shell pwd)
-release_dir := $(TOPDIR)/release
+topdir := $(shell pwd)
+release_dir := $(topdir)/release
 bin_dir=$(release_dir)/bin
 lib_dir=$(release_dir)/lib
 inc_dir=$(release_dir)/include
 #doc_dir=$(release_dir)/doc
 
-export TOPDIR bin_dir lib_dir inc_dir #doc_dir
+export topdir bin_dir lib_dir inc_dir #doc_dir
 
 DIRS = math thirdparty/math src
 

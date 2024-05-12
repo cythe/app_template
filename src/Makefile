@@ -15,5 +15,5 @@ TARGET = $(obj-y)
 
 TARGET_IS_LIB = 0
 
-include $(TOPDIR)/files.mk
-include $(TOPDIR)/rules.mk
+include $(topdir)/files.mk
+include $(topdir)/rules.mk
