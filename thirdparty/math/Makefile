@@ -1,13 +1,5 @@
 VERSION = 1.0.0
 
-release_dir=../../release
-bin_dir=$(release_dir)/bin
-lib_dir=$(release_dir)/lib
-inc_dir=$(release_dir)/include
-#doc_dir=$(release_dir)/doc
-
-.PHONY: all clean
-
 obj-so += othermath
 
 target = lib$(obj-so).$(VERSION).so
@@ -35,11 +27,7 @@ $(target): $(c_objs) $(cx_objs)
 clean:
 	rm -f $(c_objs) $(cx_objs) $(target)
 
-dirs:
-	mkdir -p $(bin_dir) $(inc_dir) $(lib_dir) 
-
-install: dirs $(target)
+install: $(target)
 	install -m 775 $(target) $(lib_dir)
 	pushd $(lib_dir) && ln -sf $(target) lib$(obj-so).so && popd
 	install -m 664 $(inc_files) $(inc_dir)
-

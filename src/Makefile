@@ -1,13 +1,5 @@
 VERSION = 1.0.0
 
-release_dir=../release
-bin_dir=$(release_dir)/bin
-lib_dir=$(release_dir)/lib
-inc_dir=$(release_dir)/include
-#doc_dir=$(release_dir)/doc
-
-.PHONY: all clean
-
 obj-y += test
 
 INC_FLAGS += -I $(inc_dir)
@@ -39,8 +31,5 @@ $(target): $(c_objs) $(cx_objs)
 clean:
 	rm -f $(c_objs) $(cx_objs) $(target)
 
-dirs:
-	mkdir -p $(bin_dir) $(inc_dir) $(lib_dir) 
-
-install: dirs $(target)
+install: $(target)
 	install -m 775 $(target) $(bin_dir)
