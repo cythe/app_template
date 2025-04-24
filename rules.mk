@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 inc_files := $(wildcard *.h)
 c_srcs  := $(wildcard *.c)
 cx_srcs := $(wildcard *.cpp)
